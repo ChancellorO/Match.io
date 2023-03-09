@@ -5,9 +5,34 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material/';
+import { blue } from '@mui/material/colors';
+
+const darkTheme = createTheme({
+    palette: {
+        background: {
+            default: '#212121',
+        },
+        primary: {
+          light: '#757ce8',
+          main: '#1b5e20',
+          dark: '#002884',
+          contrastText: '#fff',
+        },
+        secondary: {
+          light: '#ff7961',
+          main: '#e0e0e0',
+          dark: '#ba000d',
+          contrastText: '#000',
+        },
+      },
+  });
 
 function MainPage() {
     return (
+        <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
         <div className = "MainPage">
             <Box 
                 sx={{
@@ -20,14 +45,15 @@ function MainPage() {
                             component= "h1"
                             variant= "h2"
                             align = "center"
-                            color = "text.primary"
+                            color = "common.white"
+                            fontWeight = "bold"
                             gutterBottom>
                             Match.io
                         </Typography>
                         <Typography
                             variant="h5"
                             align = "center"
-                            color = "text.secondary"
+                            color = "secondary.main"
                             paragraph>
                             Want to find a friend but don't know how to? Tired of the old search bar, or simply don't have anyone to look up? 
                             Well don't you worry! 
@@ -45,8 +71,8 @@ function MainPage() {
                     <Button variant='contained'>sign in</Button>
                 </Stack>
             </Box>
-
         </div>
+        </ThemeProvider>
         
     );
 }
